@@ -1,0 +1,27 @@
+html {
+  background: #744253;
+  font-family: 'Pangolin', cursive;
+}
+
+.title {
+  text-align: center;
+  font-size: 45px;
+  color: whitesmoke;
+}
+
+.navbar-container {
+  background-color: black;
+  
+}
+
+.navbar-links-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-links {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}

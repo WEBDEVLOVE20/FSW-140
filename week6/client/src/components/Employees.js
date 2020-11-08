@@ -8,12 +8,12 @@ function Employees(props){
         <div>
             <h1 className="badge-title">Badge:</h1>
             <div className="container">
-                <p className="badge-text">Employee ID: { EmployeeID }</p>
-                <p className="badge-text">Full Name: { EmpFirstName } { EmpLastName }</p>
+                <p className="badge-text"> Employee ID: { EmployeeID }</p>
+                <p className="badge-text"> Full Name: { EmpFirstName } { EmpLastName }</p>
                 <p className="badge-text"> Address: { EmpStreetAddress } { EmpCity } { EmpState } {EmpZipCode}</p>
-                <p className="badge-text">Phone Number: {EmpAreaCode} { EmpPhoneNumber }</p>
+                <p className="badge-text"> Phone Number: {EmpAreaCode} { EmpPhoneNumber }</p>
             <div>
-                <img src={"https://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png"} alt="blank photo ID"/>
+                <img src={"https://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png"} alt=""/>
             </div>
             </div>
 	    </div>
