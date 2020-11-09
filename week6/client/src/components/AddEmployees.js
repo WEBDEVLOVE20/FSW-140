@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 
 function AddEmployees(props){
 
-    const initInputs = { firstName: props.firstName || "", lastName: props.lastName || "", living: props.living || "", bountyAmount: props.bountyAmount || "", type: props.type || ""  }
+    const initInputs = { EmpFirstName: props.EmpFirstName || "", EmpLastName: props.EmpLastName || "", EmpStreetAddress: props.EmpStreetAddress || "", EmpCity: props.EmpCity|| "", EmpState: props.EmpState || "", EmpPhoneNumber: props.EmpPhoneNumber || "", EmpZipCode: props.EmpZipCode || "", EmpAreaCode: props.EmpAreaCode || ""  }
     
     const [inputs, setInputs] = useState(initInputs)
 
@@ -14,56 +14,80 @@ function AddEmployees(props){
     
     const handleSubmit = ((e) => {
         e.preventDefault() 
-        if (inputs.living.toLowerCase() === "alive" ) {
-            inputs.living = true
-        } else {
-            inputs.living = false
-        }
-        props.submit(inputs, props._id)
+        // if (inputs.living.toLowerCase() === "alive" ) {
+        //     inputs.living = true
+        // } else {
+        //     inputs.living = false
+        // }
+        props.submit(inputs, props.EmployeeID)
         setInputs(initInputs)
     })
 
     return (
-        <div>
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name="firstName"
-                    value={inputs.firstName}
+                    name="EmpFirstName"
+                    value={inputs.EmpFirstName}
                     onChange={handleChange}
                     placeholder="First Name"
                     className="badge-text"
                 />
                 <input
                     type="text"
-                    name="lastName"
-                    value={inputs.lastName}
+                    name="EmpLastName"
+                    value={inputs.EmpLastName}
                     onChange={handleChange}
                     placeholder="Last Name"
                     className="badge-text"
                 />
                 <input
                     type="text"
-                    name="living"
-                    value={inputs.living}
+                    name="EmpStreetAddress"
+                    value={inputs.EmpStreetAddress}
                     onChange={handleChange}
-                    placeholder="Alive or Dead"
-                    className="badge-text"
-                />
-                <input
-                    type="number"
-                    name="bountyAmount"
-                    value={inputs.bountyAmount}
-                    onChange={handleChange}
-                    placeholder="Bounty Amount"
+                    placeholder="Street Address"
                     className="badge-text"
                 />
                 <input
                     type="text"
-                    name="type"
-                    value={inputs.type}
+                    name="EmpCity"
+                    value={inputs.EmpCity}
                     onChange={handleChange}
-                    placeholder="Jedi or Sith"
+                    placeholder="City"
+                    className="badge-text"
+                />
+                <input
+                    type="text"
+                    name="EmpState"
+                    value={inputs.EmpState}
+                    onChange={handleChange}
+                    placeholder="State ex.(CA)"
+                    className="badge-text"
+                />
+                <input
+                    type="text"
+                    name="EmpZipCode"
+                    value={inputs.EmpZipCode}
+                    onChange={handleChange}
+                    placeholder="Zip Code"
+                    className="badge-text"
+                />
+                <input
+                    type="text"
+                    name="EmpAreaCode"
+                    value={inputs.EmpAreaCode}
+                    onChange={handleChange}
+                    placeholder="Area Code"
+                    className="badge-text"
+                />
+                <input
+                    type="text"
+                    name="EmpPhoneNumber"
+                    value={inputs.EmpPhoneNumber}
+                    onChange={handleChange}
+                    placeholder="Phone Number"
                     className="badge-text"
                 />
                 <button className="add-btn">{ props.btnText }</button>

@@ -1,22 +1,79 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Employees from './components/Employees';
 import AddEmployees from './components/AddEmployees';
 import './App.css';
 
 function App() {
 
+  const [employees, setEmployees] = useState([])
+  
+  const getEmployees = (() => {
+      axios.get("http://localhost:7000/get")
+          .then(res => setEmployees(res.data))
+          .catch(err => console.log(err))
+  })
+
+  const addEmployee = ((newEmployee) => {
+    axios.post("http://localhost:7000/post", newEmployee)
+        .then(res => {
+            setEmployees(prevEmployees => [...prevEmployees, res.data])
+        })
+        .catch(err => console.log(err))
+  })
+
+  const deleteEmployee = ((employeeId) => {
+    axios.delete(`http://localhost:7000/delete/${employeeId}`)
+        .then(res => {
+            setEmployees(prevEmployees => prevEmployees.filter(employee => employee.EmployeeID !== employeeId))
+        })
+        .catch(err => console.log(err))
+  })
+
+  const editEmployee = ((updates, employeeId) => {
+    axios.put(`http://localhost:7000/edit/${employeeId}`, updates)
+        .then(res => {
+            setEmployees(prevEmployees => prevEmployees.map (employee => employee.EmployeeID !== employeeId ? employee : res.data))
+        })
+        .catch(err => console.log(err))
+  })
+
+
+
+
+
+useEffect(() => {
+      getEmployees()
+  }, [])
+
 
 return (
-  
-  <div className="App">
-      <Navbar />
-        <Switch>
-          <Route exact path='/' component={AddEmployees} />
-          <Route path='/employees' component={Employees} />
-        </Switch>
+    <div>
+        <h1 className='title'>New Hire Badge Database</h1>
+        <AddEmployees 
+            submit={addEmployee}
+            btnText="Add Employee"
+        />
+      {
+        employees.map(employee => 
+        {
+          return <Employees
+            {...employee}
+            EmployeeID={employee.EmployeeID}
+            EmpFirstName={employee.EmpFirstName}
+            EmpLastName={employee.EmpLastName}
+            EmpStreetAddress={employee.EmpStreetAddress}
+            EmpCity={employee.EmpCity}
+            EmpState={employee.EmpState}
+            EmpPhoneNumber={employee.EmpPhoneNumber}
+            EmpZipCode={employee.EmpZipCode}
+            EmpAreaCode={employee.EmpAreaCode}
+            deleteEmployee={deleteEmployee}
+            editEmployee={editEmployee}
+          />}) 
+        }
     </div>
-)}
+  )
+}
 
 export default App;
