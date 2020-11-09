@@ -23,6 +23,7 @@ function Employees(props){
             <p className="badge-text"> Phone Number: {EmpAreaCode} { EmpPhoneNumber }</p>
 
             <img src={"https://www.osiwa.org/wp-content/uploads/2019/02/Blank-Person.png"} alt=""/>
+            <div>
             <button
                 className="delete-btn"
                 onClick={() => props.deleteEmployee(EmployeeID)}>
@@ -33,6 +34,7 @@ function Employees(props){
                 onClick={() => setEditToggle(prevToggle => !prevToggle)}>
                 Edit
             </button>
+            </div>
         </>
         :
         <>

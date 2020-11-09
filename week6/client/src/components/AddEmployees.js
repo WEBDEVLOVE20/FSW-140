@@ -13,17 +13,13 @@ function AddEmployees(props){
     })
     
     const handleSubmit = ((e) => {
-        e.preventDefault() 
-        // if (inputs.living.toLowerCase() === "alive" ) {
-        //     inputs.living = true
-        // } else {
-        //     inputs.living = false
-        // }
         props.submit(inputs, props.EmployeeID)
         setInputs(initInputs)
     })
 
     return (
+        <div>
+        <h1 className="form-title">Information Form</h1>
         <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <input
@@ -32,7 +28,7 @@ function AddEmployees(props){
                     value={inputs.EmpFirstName}
                     onChange={handleChange}
                     placeholder="First Name"
-                    className="badge-text"
+                    className="form-text"
                 />
                 <input
                     type="text"
@@ -40,7 +36,7 @@ function AddEmployees(props){
                     value={inputs.EmpLastName}
                     onChange={handleChange}
                     placeholder="Last Name"
-                    className="badge-text"
+                    className="form-text"
                 />
                 <input
                     type="text"
@@ -48,7 +44,7 @@ function AddEmployees(props){
                     value={inputs.EmpStreetAddress}
                     onChange={handleChange}
                     placeholder="Street Address"
-                    className="badge-text"
+                    className="form-text"
                 />
                 <input
                     type="text"
@@ -56,7 +52,7 @@ function AddEmployees(props){
                     value={inputs.EmpCity}
                     onChange={handleChange}
                     placeholder="City"
-                    className="badge-text"
+                    className="form-text"
                 />
                 <input
                     type="text"
@@ -64,7 +60,7 @@ function AddEmployees(props){
                     value={inputs.EmpState}
                     onChange={handleChange}
                     placeholder="State ex.(CA)"
-                    className="badge-text"
+                    className="form-text"
                 />
                 <input
                     type="text"
@@ -72,7 +68,7 @@ function AddEmployees(props){
                     value={inputs.EmpZipCode}
                     onChange={handleChange}
                     placeholder="Zip Code"
-                    className="badge-text"
+                    className="form-text"
                 />
                 <input
                     type="text"
@@ -80,7 +76,7 @@ function AddEmployees(props){
                     value={inputs.EmpAreaCode}
                     onChange={handleChange}
                     placeholder="Area Code"
-                    className="badge-text"
+                    className="form-text"
                 />
                 <input
                     type="text"
@@ -88,10 +84,11 @@ function AddEmployees(props){
                     value={inputs.EmpPhoneNumber}
                     onChange={handleChange}
                     placeholder="Phone Number"
-                    className="badge-text"
+                    className="form-text"
                 />
                 <button className="add-btn">{ props.btnText }</button>
             </form>
+        </div>
         </div>
     )
 }
